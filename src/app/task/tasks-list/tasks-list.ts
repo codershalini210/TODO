@@ -2,9 +2,10 @@ import { Component,computed,inject,signal } from '@angular/core';
 import { TaskStatusOptions } from '../task.model';
 import { TaskItem } from './task-item/task-item';
 import { TaskService } from '../task.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-tasks-list',
-  imports: [TaskItem],
+  imports: [TaskItem,CommonModule],
   templateUrl: './tasks-list.html',
   styleUrl: './tasks-list.css',
 })
@@ -36,4 +37,12 @@ tasks=computed(()=>
 onChangeTasksFilter(filter: string) {
     this.selectedFilter.set(filter);
   }
+trackByOptionValue(index: number, option: any): string {
+  return option.value;
+}
+
+// For tasks list
+// trackByTask(index: number, task: any): string | number {
+//   return task.id; // assuming each task has a unique id
+// }
 }

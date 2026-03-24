@@ -3,17 +3,19 @@
   <p>
     <select (change)="onChangeTasksFilter(filter.value)" #filter>
       <option value="all">All</option>
-      @for (option of taskStatusOptions; track option.value) {
-      <option [value]="option.value">{{ option.text }}</option>
-      }
+      <!-- <option *ngFor="let option of taskStatusOptions; trackBy: trackByOptionValue" -->
+      <option *ngFor="let option of taskStatusOptions;"
+      [value]="option.value"
+      >
+        {{ option.text }}
+      </option>
     </select>
   </p>
 </header>
 
 <ul>
-  @for (task of tasks(); track task) {
-  <li>
-    <app-task-item [task]="task" />
+  <li *ngFor="let task of tasks(); ">
+  <!-- <li *ngFor="let task of tasks();">  -->
+     <app-task-item [task]="task"></app-task-item>
   </li>
-  }
 </ul>

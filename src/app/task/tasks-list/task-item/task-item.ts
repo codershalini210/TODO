@@ -2,10 +2,10 @@ import { Component, computed, inject,input } from '@angular/core';
 import { Task,TaskStatus,TaskStatusOptions } from '../../task.model';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../task.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-task-item',
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './task-item.html',
   styleUrl: './task-item.css',
 })
@@ -43,4 +43,5 @@ onChangeTaskStatus(taskId:string,status:string){
   }
     this.taskService.updateTaskStatus(taskId, newStatus);
 }
+
 }
